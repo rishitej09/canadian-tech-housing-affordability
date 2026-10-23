@@ -1,0 +1,5 @@
+GitHub repository:
+> https://github.com/rishitej09/canadian-tech-housing-affordability.git
+
+Taiga project:
+> https://tree.taiga.io/project/guillermoreina-canadian-tech-housing-affordability/backlog
