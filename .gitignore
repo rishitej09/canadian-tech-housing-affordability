@@ -4,7 +4,8 @@ __pycache__/
 *$py.class
 
 # .csv
-data/*.csv
+#Including the data to be sync
+#data/*.csv
 
 # C extensions
 *.so
