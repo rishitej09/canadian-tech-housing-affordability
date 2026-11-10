@@ -238,7 +238,7 @@ def clean_data_jobs(jooble_raw_path = None , adzuna_raw_path = None):
 
     # Removing helper columns used only for duplicate matching
     jobs = jobs.drop(columns=["title_key", "company_key"],errors="ignore").copy()
-
+    jobs = jobs.dropna(subset=["salary_mid_annual"])
     return adzuna_raw, jooble_raw, jobs, duplicate_review
 
 
