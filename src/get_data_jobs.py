@@ -57,7 +57,7 @@ def getJoobleData():
                 "keywords": position,
                 "location": city,
                 "radius": RADIUS,
-                "page": 12,
+                "page": 1,
                 "ResultOnPage": RESULTS_PER_PAGE
             }
             try:
@@ -346,11 +346,12 @@ def getAdzunaData():
                             )
                             break
 
-                        request_datetime = datetime.now(timezone.utc).isoformat()
+                        #request_datetime = datetime.now(timezone.utc).isoformat()
 
                         for job in jobs:
                             job["search_position"] = position
-                            job["search_city"] = city#                        job["request_datetime"] = request_datetime
+                            job["search_city"] = city
+                            job["request_datetime"] = request_datetime
                             job["source_site"] = "Adzuna"
                             all_jobs.append(job)
                         time.sleep(REQUEST_DELAY)
