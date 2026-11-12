@@ -1,10 +1,10 @@
-Occupation,Community/Area,Low ($/hour),Median ($/hour),High ($/hour),Job prospects for the next 3 years (1-5 rating),Job prospects legend,NOC ID
-Business Data Analyst,Vancouver Island and Coast Region , $30.00 , $40.00 , $48.08 , 4 ,Good,21221
-Business Data Analyst,Toronto Region , $33.33 , $45.13 , $62.50 , 2 ,Limited,21221
-Business Data Analyst,Montréal Region , $31.83 , $47.00 , $66.26 , 2 ,Limited,21221
-Data Scientist,Vancouver Island and Coast Region , $32.45 , $48.08 , $88.94 , 3 ,Moderate,21211
-Data Scientist,Toronto Region , $32.00 , $46.33 , $71.79 , 1 ,Very limited,21211
-Data Scientist,Montréal Region , $31.73 , $45.64 , $96.00 , 2 ,Limited,21211
-Data Engineer,Vancouver Island and Coast Region , $32.45 , $48.08 , $88.94 , 3 ,Moderate,21211
-Data Engineer,Toronto Region , $32.00 , $46.33 , $71.79 , 1 ,Very limited,21211
-Data Engineer,Montréal Region , $31.73 , $45.64 , $96.00 , 2 ,Limited,21211
+ï»¿Occupation,Community/Area,Low ($/hour),Median ($/hour),High ($/hour),Job prospects for the next 3 years (1-5 rating),Job prospects legend,NOC ID
+Business Data Analyst,Vancouver Island and Coast Region ,$30.00 ,$40.00 ,$48.08 ,4,Good,21221
+Business Data Analyst,Toronto Region ,$33.33 ,$45.13 ,$62.50 ,2,Limited,21221
+Business Data Analyst,MontrÃ©al Region ,$31.83 ,$47.00 ,$66.26 ,2,Limited,21221
+Data Scientist,Vancouver Island and Coast Region ,$32.45 ,$48.08 ,$88.94 ,3,Moderate,21211
+Data Scientist,Toronto Region ,$32.00 ,$46.33 ,$71.79 ,1,Very limited,21211
+Data Scientist,MontrÃ©al Region ,$31.73 ,$45.64 ,$96.00 ,2,Limited,21211
+Data Engineer,Vancouver Island and Coast Region ,$32.45 ,$48.08 ,$88.94 ,3,Moderate,21211
+Data Engineer,Toronto Region ,$32.00 ,$46.33 ,$71.79 ,1,Very limited,21211
+Data Engineer,MontrÃ©al Region ,$31.73 ,$45.64 ,$96.00 ,2,Limited,21211
