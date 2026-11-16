@@ -25,7 +25,7 @@ def standardize_city(value):
     elif "vancouver" in value:
         return "Vancouver"
     elif "montreal" in value or "montréal" in value:
-        return "Montréal"
+        return "Montreal"
     return np.nan
 
 def standardize_role(value):
