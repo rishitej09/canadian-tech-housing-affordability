@@ -25,7 +25,7 @@ def standardize_city(value):
     elif "vancouver" in value:
         return "Vancouver"
     elif "montreal" in value or "montréal" in value:
-        return "Montréal"
+        return "Montreal"
     return np.nan
 
 def standardize_role(value):
@@ -204,7 +204,7 @@ def clean_data_jobs(jooble_raw_path = None , adzuna_raw_path = None):
     jobs["salary_needs_review"] = (jobs["salary_min_annual"].notna()& ((jobs["salary_min_annual"] < 15000)| (jobs["salary_min_annual"] > 500000))) | (jobs["salary_max_annual"].notna()&((jobs["salary_max_annual"] < 15000)| (jobs["salary_max_annual"] > 500000)))
 
     # Keeping only the three intended cities and three intended roles
-    jobs = jobs[jobs["city"].isin(["Toronto", "Vancouver", "Montréal"])
+    jobs = jobs[jobs["city"].isin(["Toronto", "Vancouver", "Montreal"])
                 & jobs["job_role"].isin(["Data Analyst", "Data Scientist", "Data Engineer"])].copy()
     print("Combined records after city and role validation:", len(jobs))
 
