@@ -7,44 +7,253 @@ from config import (SPDF1_FILEPATHCSV,
                     SPDF5_FILEPATHCSV)
 
 def clean_support_df1(filepath):
-    spdf1 = pd.read_csv(filepath)
-    # Cleaning code, in construction
+    spdf1_raw = pd.read_csv(filepath)
+    spdf1_clean = spdf1_raw.copy()
 
-    return spdf1
+    # Standardize column names
+    spdf1_clean.columns = [
+        "title",
+        "city",
+        "salary_min_hourly",
+        "salary_mid_hourly",
+        "salary_max_hourly",
+        "job_prospects_rating",
+        "job_prospects_meaning",
+        "noc_id"
+        ]
+
+    # Trim any spaces found in the beginning or end of the string values from each text column
+    spdf1_clean["title"] = spdf1_clean["title"].str.strip()
+    spdf1_clean["city"] = spdf1_clean["city"].str.strip()
+    spdf1_clean["salary_min_hourly"] = spdf1_clean["salary_min_hourly"].str.strip()
+    spdf1_clean["salary_mid_hourly"] = spdf1_clean["salary_mid_hourly"].str.strip()
+    spdf1_clean["salary_max_hourly"] = spdf1_clean["salary_max_hourly"].str.strip()
+    spdf1_clean["job_prospects_meaning"] = spdf1_clean["job_prospects_meaning"].str.strip()
+    
+    # Standardize "title" and "city" values
+    spdf1_clean["title"] = spdf1_clean["title"].str.replace({"Business Data Analyst":"Data Analyst"})
+    spdf1_clean["city"] = spdf1_clean["city"].str.replace({"Vancouver Island and Coast Region":"Vancouver",
+                                                       "Toronto Region":"Toronto",
+                                                       "Montréal Region":"Montréal"})
+
+    # Create "province" column based on "city"
+    spdf1_clean["province"] = spdf1_clean["city"]
+    spdf1_clean["province"] = spdf1_clean["province"].str.replace("Vancouver","BC")
+    spdf1_clean["province"] = spdf1_clean["province"].str.replace("Toronto","ON")
+    spdf1_clean["province"] = spdf1_clean["province"].str.replace("Montréal","QC")
+    
+    # Delete "$" sign from hourly salaries columns
+    spdf1_clean["salary_min_hourly"] = spdf1_clean["salary_min_hourly"].str.replace("$","")
+    spdf1_clean["salary_mid_hourly"] = spdf1_clean["salary_mid_hourly"].str.replace("$","")
+    spdf1_clean["salary_max_hourly"] = spdf1_clean["salary_max_hourly"].str.replace("$","")
+
+    # Specify hourly salaries columns as float type
+    spdf1_clean["salary_min_hourly"] = spdf1_clean["salary_min_hourly"].astype(float)
+    spdf1_clean["salary_mid_hourly"] = spdf1_clean["salary_mid_hourly"].astype(float)
+    spdf1_clean["salary_max_hourly"] = spdf1_clean["salary_max_hourly"].astype(float)
+
+    # Create a calculation for annual salaries based on the hourly wages
+    # Formula: annual salary = hourly salary * work hours per week * weeks per year = hourly salary * 40 * 52
+    spdf1_clean["salary_min_annual"] = spdf1_clean["salary_min_hourly"] * 40 * 52
+    spdf1_clean["salary_mid_annual"] = spdf1_clean["salary_mid_hourly"] * 40 * 52
+    spdf1_clean["salary_max_annual"] = spdf1_clean["salary_max_hourly"] * 40 * 52
+    spdf1_clean["salary_min_annual"] = spdf1_clean["salary_min_annual"].round(0)
+    spdf1_clean["salary_mid_annual"] = spdf1_clean["salary_mid_annual"].round(0)
+    spdf1_clean["salary_max_annual"] = spdf1_clean["salary_max_annual"].round(0)
+
+    spdf1_clean = spdf1_clean.reset_index(drop=True)
+
+    return spdf1_raw, spdf1_clean
+
+
+
+
 
 def clean_support_df2(filepath):
-    spdf2 = pd.read_csv(filepath)
-    # Cleaning code, in construction
+    spdf2_raw = pd.read_csv(filepath)
+    spdf2_clean = spdf2_raw.copy()
+
+    # Standardize column names
+    spdf2_clean.columns = [
+        "city",
+        "building_type",
+        "quarter",
+        "monthly_rent_cad"
+        ]
+
+    # Trim any spaces found in the beginning or end of the string values from each text column
+    spdf2_clean["city"] = spdf2_clean["city"].str.strip()
+    spdf2_clean["building_type"] = spdf2_clean["building_type"].str.strip()
+    spdf2_clean["quarter"] = spdf2_clean["quarter"].str.strip()
     
-    return spdf2
+    # Standardize "city" values
+    spdf2_clean["city"] = spdf2_clean["city"].str.replace({"Vancouver, Census metropolitan area (CMA)":"Vancouver",
+                                                           "Toronto, Census metropolitan area (CMA)":"Toronto",
+                                                           "Montréal, Census metropolitan area (CMA)":"Montréal"})
+
+    # # Create "province" column based on "city"
+    spdf2_clean["province"] = spdf2_clean["city"]
+    spdf2_clean["province"] = spdf2_clean["province"].str.replace("Vancouver","BC")
+    spdf2_clean["province"] = spdf2_clean["province"].str.replace("Toronto","ON")
+    spdf2_clean["province"] = spdf2_clean["province"].str.replace("Montréal","QC")
+
+    # Replace ".." entries in monthly rent column with NA
+    spdf2_clean["monthly_rent_cad"] = spdf2_clean["monthly_rent_cad"].str.replace("..","0")
+    spdf2_clean["monthly_rent_cad"] = spdf2_clean["monthly_rent_cad"].str.replace(",","")
+    spdf2_clean["monthly_rent_cad"] = spdf2_clean["monthly_rent_cad"].astype(int)
+    spdf2_clean["monthly_rent_cad"] = spdf2_clean["monthly_rent_cad"].replace(0,np.nan)
+    spdf2_clean = spdf2_clean.dropna()
+
+    # Create a calculation for annual rent based on the monthly rent
+    spdf2_clean["annual_rent_cad"] = spdf2_clean["monthly_rent_cad"]
+    spdf2_clean["annual_rent_cad"] = spdf2_clean["annual_rent_cad"] * 12
+
+    # Separate building_type to have the builting type and the number of bedrooms (named "bedrooms")
+    spdf2_clean["bedrooms"] = spdf2_clean["building_type"]
+    spdf2_clean["building_type"] = spdf2_clean["building_type"].str.replace({'House - 2 bedrooms':'House',
+                                                                             'House - 3 or more bedrooms':'House',
+                                                                             'Apartment - No bedroom':'Apartment',
+                                                                             'Apartment - 1 bedroom':'Apartment',
+                                                                             'Apartment - 2 bedrooms':'Apartment',
+                                                                             'Apartment - 3 or more bedrooms':'Apartment',
+                                                                             'Room':'Room'})
+    spdf2_clean["bedrooms"] = spdf2_clean["bedrooms"].str.replace({'House - 2 bedrooms':'2',
+                                                                   'House - 3 or more bedrooms':'3',
+                                                                   'Apartment - No bedroom':'0',
+                                                                   'Apartment - 1 bedroom':'1',
+                                                                   'Apartment - 2 bedrooms':'2',
+                                                                   'Apartment - 3 or more bedrooms':'3',
+                                                                   'Room':'1'})
+    spdf2_clean["bedrooms"] = spdf2_clean["bedrooms"].astype(int)
+
+    spdf2_clean = spdf2_clean.reset_index(drop=True)
+    
+    return spdf2_raw, spdf2_clean
+
+
+
+
 
 def clean_support_df3(filepath):
-    spdf3 = pd.read_csv(filepath)
-    # Cleaning code, in construction
+    spdf3_raw = pd.read_csv(filepath)
+    spdf3_clean = spdf3_raw.copy()
+
+    # Standardize column names
+    spdf3_clean.columns = [
+        'building_type',
+        'bedrooms',
+        'year',
+        'Montréal',
+        'Toronto',
+        'Vancouver'
+        ]
+
+    # Trim any spaces found in the beginning or end of the string values from each text column
+    spdf3_clean["building_type"] = spdf3_clean["building_type"].str.strip()
+    spdf3_clean["bedrooms"] = spdf3_clean["bedrooms"].str.strip()
+    spdf3_clean["Montréal"] = spdf3_clean["Montréal"].str.strip()
+    spdf3_clean["Toronto"] = spdf3_clean["Toronto"].str.strip()
+    spdf3_clean["Vancouver"] = spdf3_clean["Vancouver"].str.strip()
+
+    # Create "structure" column based on "building_type" and standardize "bedrooms"
+    spdf3_clean["building_structure"] = spdf3_clean["building_type"]
+    spdf3_clean["building_type"] = spdf3_clean["building_type"].str.replace({
+        'Row structures of three units and over':'Row / Townhouse',
+        'Apartment structures of three units and over':'Apartment',
+        'Apartment structures of six units and over':'Apartment'})
+    spdf3_clean["building_structure"] = spdf3_clean["building_structure"].str.replace({
+        'Row structures of three units and over':'Three units and over',
+        'Apartment structures of three units and over':'Three units and over',
+        'Apartment structures of six units and over':'Six units and over'})
+    spdf3_clean["bedrooms"] = spdf3_clean["bedrooms"].str.replace({'One bedroom units':'1',
+                                                                   'Two bedroom units':'2',
+                                                                   'Three bedroom units':'3'})
+
+    # Replace "F" entries in "Montréal", "Toronto" & "Vancouver" columns with NA
+    spdf3_clean["Montréal"] = spdf3_clean["Montréal"].str.replace("F","0")
+    spdf3_clean["Toronto"] = spdf3_clean["Toronto"].str.replace("F","0")
+    spdf3_clean["Vancouver"] = spdf3_clean["Vancouver"].str.replace("F","0")
+
+    spdf3_clean["Montréal"] = spdf3_clean["Montréal"].str.replace(",","")
+    spdf3_clean["Toronto"] = spdf3_clean["Toronto"].str.replace(",","")
+    spdf3_clean["Vancouver"] = spdf3_clean["Vancouver"].str.replace(",","")
+
+    spdf3_clean["Montréal"] = spdf3_clean["Montréal"].astype(int)
+    spdf3_clean["Toronto"] = spdf3_clean["Toronto"].astype(int)
+    spdf3_clean["Vancouver"] = spdf3_clean["Vancouver"].astype(int)
+
+    spdf3_clean["Montréal"] = spdf3_clean["Montréal"].replace(0,np.nan)
+    spdf3_clean["Toronto"] = spdf3_clean["Toronto"].replace(0,np.nan)
+    spdf3_clean["Vancouver"] = spdf3_clean["Vancouver"].replace(0,np.nan)
     
-    return spdf3
+    spdf3_clean = spdf3_clean.dropna()
+
+    # Turn each city into separate datasets and concatenate all to have a single dataset
+    spdf3_clean_Montréal = spdf3_clean[["building_type","bedrooms","building_structure","year","Montréal"]]
+    spdf3_clean_Montréal["city"] = "Montréal"
+    spdf3_clean_Montréal["province"] = "QC"
+    spdf3_clean_Montréal.columns = ["building_type","bedrooms","building_structure","year","monthly_rent_cad","city","province"]
+
+    spdf3_clean_Toronto = spdf3_clean[["building_type","bedrooms","building_structure","year","Toronto"]]
+    spdf3_clean_Toronto["city"] = "Toronto"
+    spdf3_clean_Toronto["province"] = "ON"
+    spdf3_clean_Toronto.columns = ["building_type","bedrooms","building_structure","year","monthly_rent_cad","city","province"]
+
+    spdf3_clean_Vancouver = spdf3_clean[["building_type","bedrooms","building_structure","year","Vancouver"]]
+    spdf3_clean_Vancouver["city"] = "Vancouver"
+    spdf3_clean_Vancouver["province"] = "BC"
+    spdf3_clean_Vancouver.columns = ["building_type","bedrooms","building_structure","year","monthly_rent_cad","city","province"]
+
+    spdf3_clean = pd.concat([spdf3_clean_Montréal, spdf3_clean_Toronto, spdf3_clean_Vancouver], ignore_index=True)
+
+    return spdf3_raw, spdf3_clean
+
+
+
+
 
 def clean_support_df4(filepath):
-    spdf4 = pd.read_csv(filepath)
+    spdf4_raw = pd.read_csv(filepath)
+    spdf4_clean = spdf4_raw.copy()
     # Cleaning code, in construction
     
-    return spdf4
+    return spdf4_raw, spdf4_clean
+
+
+
+
 
 def clean_support_df5(filepath):
-    spdf5 = pd.read_csv(filepath)
+    spdf5_raw = pd.read_csv(filepath)
+    spdf5_clean = spdf5_raw.copy()
     # Cleaning code, in construction
     
-    return spdf5
+    return spdf5_raw, spdf5_clean
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 
 # TESTING (To erase after the functions return the expected results)
-spdf1 = clean_support_df1(SPDF1_FILEPATHCSV)
-spdf2 = clean_support_df2(SPDF2_FILEPATHCSV)
-spdf3 = clean_support_df3(SPDF3_FILEPATHCSV)
-spdf4 = clean_support_df4(SPDF4_FILEPATHCSV)
-spdf5 = clean_support_df5(SPDF5_FILEPATHCSV)
+spdf1_raw, spdf1_clean = clean_support_df1(SPDF1_FILEPATHCSV)
+spdf2_raw, spdf2_clean = clean_support_df2(SPDF2_FILEPATHCSV)
+spdf3_raw, spdf3_clean = clean_support_df3(SPDF3_FILEPATHCSV)
+spdf4_raw, spdf4_clean = clean_support_df4(SPDF4_FILEPATHCSV)
+spdf5_raw, spdf5_clean = clean_support_df5(SPDF5_FILEPATHCSV)
 
-print(spdf1)
+# print(spdf4_clean["bedrooms"].unique())
+# print(spdf4_clean.dtypes)
+# print(spdf4_clean.head())
+# print(spdf4_clean.columns)
+# print(spdf4_clean.isna().sum())
+print(spdf4_clean)
