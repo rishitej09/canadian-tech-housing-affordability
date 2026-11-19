@@ -290,11 +290,10 @@ def clean_support_df4(filepath):
 
 
 # TESTING (To erase after the functions return the expected results)
-spdf1_raw, spdf1_clean = clean_support_df1(SPDF1_FILEPATHCSV)
-spdf2_raw, spdf2_clean = clean_support_df2(SPDF2_FILEPATHCSV)
-spdf3_raw, spdf3_clean = clean_support_df3(SPDF3_FILEPATHCSV)
-spdf4_raw, spdf4_clean = clean_support_df4(SPDF4_FILEPATHCSV)
+# spdf1_raw, spdf1_clean = clean_support_df1(SPDF1_FILEPATHCSV)
+# spdf2_raw, spdf2_clean = clean_support_df2(SPDF2_FILEPATHCSV)
+# spdf3_raw, spdf3_clean = clean_support_df3(SPDF3_FILEPATHCSV)
+# spdf4_raw, spdf4_clean = clean_support_df4(SPDF4_FILEPATHCSV)
 
-print(spdf4_clean.head())
+# print(spdf1_clean.head())
 # print(spdf1_clean.isna().sum())
-# print(spdf1_clean)
