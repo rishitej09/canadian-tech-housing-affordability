@@ -206,7 +206,8 @@ def clean_data_jobs(jooble_raw_path = None , adzuna_raw_path = None):
     # Keeping only the three intended cities and three intended roles
     jobs = jobs[jobs["city"].isin(["Toronto", "Vancouver", "Montreal"])
                 & jobs["job_role"].isin(["Data Analyst", "Data Scientist", "Data Engineer"])].copy()
-    print("Combined records after city and role validation:", len(jobs))
+    
+    ######print("Combined records after city and role validation:", len(jobs))
 
     # Remove duplicate IDs within the same source.
     jobs = jobs.drop_duplicates(subset=["source", "source_id"],keep="first").copy()
@@ -230,8 +231,8 @@ def clean_data_jobs(jooble_raw_path = None , adzuna_raw_path = None):
     jobs.loc[valid_key, "duplicate_candidate"] = (jobs.loc[valid_key, ["title_key", "company_key", "city"]].apply(tuple, axis=1).isin(cross_source_keys))
 
     
-    print("Records after within-source deduplication:", len(jobs))
-    print("Potential cross-source duplicate records:",jobs["duplicate_candidate"].sum())
+    ######print("Records after within-source deduplication:", len(jobs))
+    ######print("Potential cross-source duplicate records:",jobs["duplicate_candidate"].sum())
 
     # Review possible duplicates rather than deleting them automatically.
     duplicate_review = jobs.loc[jobs["duplicate_candidate"],["source", "title", "company", "city", "salary_original", "url"]].sort_values(["city", "company", "title"])
