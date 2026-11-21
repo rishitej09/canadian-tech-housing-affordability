@@ -195,10 +195,33 @@ def clean_data_jobs(jooble_raw_path = None , adzuna_raw_path = None):
     jobs["city"] = jobs["city_raw"].apply(standardize_city)
     jobs["job_role"] = jobs["search_position"].apply(standardize_role)
     # Standardizing common employment type labels
-    jobs["job_type"] = (jobs["job_type"].str.lower().str.replace("_", " ", regex=False).str.strip())
+    #jobs["job_type"] = (jobs["job_type"].str.lower().str.replace("_", " ", regex=False).str.strip())
+    
+    
+    ################################ UPDATE
+    # Standardizing common employment type labels
+    job_type = jobs["job_type"].str.lower().str.replace("_", " ", regex=False).str.strip()
+
+    jobs["job_type"] = np.select(
+    [
+        job_type.str.contains(r"\bfull[\s-]*time\b", na=False),
+        job_type.str.contains(r"\bpart[\s-]*time\b", na=False),
+        job_type.str.contains("temporary", na=False),
+        job_type.str.contains("internship", na=False)
+    ],
+    ["Full-time", "Part-time", "Temporary", "Internship"],
+    default=job_type
+    )
+    # Preserve original employment type
+    jobs["job_type_original"] = jobs["job_type"].copy()
 
     # Calculate midpoint only when both salary endpoints are available
     jobs["salary_mid_annual"] = (jobs["salary_min_annual"] + jobs["salary_max_annual"])/2
+    jobs.loc[jobs["job_type"].isna() & (jobs["salary_mid_annual"] < 35000),"job_type"] = "Part-time"
+    jobs.loc[jobs["job_type"].isna() & (jobs["salary_mid_annual"] >= 35000),"job_type"] = "Full-time"
+    ################################ END OF UPDATE
+
+
 
     # Flag potentially invalid or unusual salary figures for review
     jobs["salary_needs_review"] = (jobs["salary_min_annual"].notna()& ((jobs["salary_min_annual"] < 15000)| (jobs["salary_min_annual"] > 500000))) | (jobs["salary_max_annual"].notna()&((jobs["salary_max_annual"] < 15000)| (jobs["salary_max_annual"] > 500000)))
