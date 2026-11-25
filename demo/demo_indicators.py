@@ -7,7 +7,7 @@ from src.indicators import get_indicators,calculate_indicators
 #print("---------------------------------------")
 df_indicators,df_summary=get_indicators()
 
-df_indicators.to_csv("job_affordability_indicators.csv",index=False,encoding="utf-8-sig")
+df_indicators.to_csv("jobs_clean.csv",index=False,encoding="utf-8-sig")
 
 df_summary.to_csv("affordability_summary.csv",index=False,encoding="utf-8-sig")
 
