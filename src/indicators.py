@@ -1,5 +1,5 @@
 
-from demo.demo_cleaning import jobs
+#from demo.demo_cleaning import jobs
 import pandas as pd
 import numpy as np
 from pathlib import Path
@@ -62,7 +62,7 @@ def calculate_indicators(annual_salary, rents,AFFORDABILITY_THRESHOLD):
 # ============================================================
 # MAIN FUNCTION
 # ============================================================
-def get_indicators(JOBS_FILE = "data/jobs_clean.csv",HOUSING_FILE = "data/Master_Housing_Dataset_V2.xlsx",AFFORDABILITY_THRESHOLD = 0.30,BEDROOMS_TO_INCLUDE = [0,1,2,4,5,6,7]):
+def get_indicators(JOBS_FILE = "data/jobs_clean.csv",HOUSING_FILE = "data/Master_Housing_Dataset_V2.xlsx",AFFORDABILITY_THRESHOLD = 0.30,BEDROOMS_TO_INCLUDE = [0,1,2,3,4,5,6,7]):
     
     # ============================================================
     # LOAD DATASETS
