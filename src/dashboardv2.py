@@ -574,12 +574,33 @@ if not aff_summary.empty:
             "rent_burden_pct": "Estimated Rent Burden (%)",
             "job_role": "Occupation"
         },
-        hover_data={
-            "median_annual_salary": ":,.0f",
-            "median_monthly_rent": ":,.0f",
-            "job_count": True
-        }
+        #hover_data={
+        #    "median_annual_salary": ":,.0f",
+        #    "median_monthly_rent": ":,.0f",
+        #    "job_count": True
+        #}
+        custom_data=[
+            "job_role",
+            "median_annual_salary",
+            "median_monthly_rent",
+            "job_count"
+        ]
     )
+    fig5.update_traces(
+        hovertemplate=(
+            "<b>%{customdata[0]}</b><br>"
+            "City: %{x}<br>"
+            "Estimated Rent Burden: %{y:.1f}%<br>"
+            "Median Annual Salary: $%{customdata[1]:,.0f}<br>"
+            "Median Monthly Rent: $%{customdata[2]:,.0f}<br>"
+            "Job Listings: %{customdata[3]:,.0f}"
+            "<extra></extra>"
+        ),
+        texttemplate="%{y:.1f}%",
+        textposition="outside"
+    )
+    
+
     fig5.add_hline(
         y=AFFORDABILITY_THRESHOLD * 100,
         line_dash="dash",
@@ -587,7 +608,7 @@ if not aff_summary.empty:
         annotation_text=(f"{AFFORDABILITY_THRESHOLD:.0%} Affordability Threshold")
     )
     fig5.update_yaxes(ticksuffix="%")
-    fig5.update_traces(textposition="outside")
+    #fig5.update_traces(textposition="outside")
     #st.plotly_chart(fig5,use_container_width=True,key="rent_burden_chart")
     aff_col1.plotly_chart(
         format_chart(fig5, height=500),
@@ -622,12 +643,31 @@ if not aff_summary.empty:
             "value": "Rental Listings (%)",
             "variable": "Affordability Status"
         },
-        hover_data=[
+        #hover_data=[
+        #    "affordable_listings_count",
+        #    "total_rental_listings",
+        #    "median_annual_salary"
+        #]
+        custom_data=[
             "affordable_listings_count",
             "total_rental_listings",
             "median_annual_salary"
         ]
     )
+    fig6.update_traces(
+        hovertemplate=(
+            "<b>%{y}</b><br>"
+            "Affordability Status: %{fullData.name}<br>"
+            "Share of Rental Listings: %{x:.1f}%<br>"
+            "Affordable Rental Listings: %{customdata[0]:,.0f}<br>"
+            "Total Rental Listings: %{customdata[1]:,.0f}<br>"
+            "Median Annual Salary: $%{customdata[2]:,.0f}"
+            "<extra></extra>"
+        ),
+        texttemplate="%{x:.1f}%",
+        textposition="inside"
+    )
+
     fig6.update_xaxes(
         range=[0, 100],
         ticksuffix="%"
@@ -747,17 +787,33 @@ if not aff_summary.empty:
             "city": "City",
             "job_count": "Job Listings"
         },
-        hover_data={
-            "city": True,
-            "city_label": False,
-            "median_annual_salary": ":,.0f",
-            "median_monthly_rent": ":,.0f"
-        }
+        #hover_data={
+        #    "city": True,
+        #    "city_label": False,
+        #    "median_annual_salary": ":,.0f",
+        #    "median_monthly_rent": ":,.0f"
+        #}
+        custom_data=[
+            "job_role",
+            "city",
+            "job_count",
+            "median_annual_salary",
+            "median_monthly_rent"
+        ]
     )
-
     fig8.update_traces(
         textposition="top center",
-        marker=dict(opacity=0.85)
+        marker=dict(opacity=0.85),
+        hovertemplate=(
+            "<b>%{customdata[0]}</b><br>"
+            "City: %{customdata[1]}<br><br>"
+            "Estimated Rent Burden: %{x:.1f}%<br>"
+            "Affordable Rental Listings: %{y:.1f}%<br>"
+            "Median Annual Salary: $%{customdata[3]:,.0f}<br>"
+            "Median Monthly Rent: $%{customdata[4]:,.0f}<br>"
+            "Job Listings: %{customdata[2]:,.0f}"
+            "<extra></extra>"
+        )
     )
 
     fig8.add_vline(
@@ -885,10 +941,27 @@ if not aff_job_indicators.empty:
             "value": "Job Listings (%)",
             "variable": "Affordability Status"
         },
-        hover_data=[
+        #hover_data=[
+        #    "total_jobs",
+        #    "affordable_jobs_count"
+        #]
+        custom_data=[
             "total_jobs",
             "affordable_jobs_count"
         ]
+    )
+
+    fig10.update_traces(
+        hovertemplate=(
+            "<b>%{y}</b><br>"
+            "Affordability Status: %{fullData.name}<br>"
+            "Share of Job Listings: %{x:.1f}%<br>"
+            "Affordable Job Listings: %{customdata[1]:,.0f}<br>"
+            "Total Job Listings: %{customdata[0]:,.0f}"
+            "<extra></extra>"
+        ),
+        texttemplate="%{x:.1f}%",
+        textposition="inside"
     )
 
     fig10.update_xaxes(range=[0, 100],ticksuffix="%")
