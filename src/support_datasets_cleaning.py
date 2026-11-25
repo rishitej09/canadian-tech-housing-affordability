@@ -1,9 +1,5 @@
 import pandas as pd
 import numpy as np
-from config import (SPDF1_FILEPATHCSV,
-                    SPDF2_FILEPATHCSV,
-                    SPDF3_FILEPATHCSV,
-                    SPDF4_FILEPATHCSV)
 
 def clean_support_df1(filepath):
     spdf1_raw = pd.read_csv(filepath)
@@ -59,6 +55,8 @@ def clean_support_df1(filepath):
     spdf1_clean["salary_min_annual"] = spdf1_clean["salary_min_annual"].round(0).astype("int64[pyarrow]")
     spdf1_clean["salary_mid_annual"] = spdf1_clean["salary_mid_annual"].round(0).astype("int64[pyarrow]")
     spdf1_clean["salary_max_annual"] = spdf1_clean["salary_max_annual"].round(0).astype("int64[pyarrow]")
+
+    spdf1_clean = spdf1_clean.drop_duplicates()
 
     spdf1_clean = spdf1_clean.reset_index(drop=True)
 
@@ -124,6 +122,11 @@ def clean_support_df2(filepath):
                                                                    'Apartment - 3 or more bedrooms':'3',
                                                                    'Room':'1'})
     spdf2_clean["bedrooms"] = spdf2_clean["bedrooms"].astype("int64[pyarrow]")
+
+    # Filter the data to the most recent complete years
+    spdf2_clean = spdf2_clean[spdf2_clean["quarter"].str[-4:].astype(int).between(2021, 2025)]
+
+    spdf2_clean = spdf2_clean.drop_duplicates()
 
     spdf2_clean = spdf2_clean.reset_index(drop=True)
     
@@ -209,6 +212,13 @@ def clean_support_df3(filepath):
     spdf3_clean["annual_rent_cad"] = spdf3_clean["monthly_rent_cad"]
     spdf3_clean["annual_rent_cad"] = spdf3_clean["annual_rent_cad"] * 12
 
+    # Filter the data to the most recent complete years
+    spdf3_clean = spdf3_clean[spdf3_clean["year"].between(2021, 2025)]
+
+    spdf3_clean = spdf3_clean.drop_duplicates()
+
+    spdf3_clean = spdf3_clean.reset_index(drop=True)
+
     return spdf3_raw, spdf3_clean
 
 
@@ -269,7 +279,16 @@ def clean_support_df4(filepath):
     spdf4_clean["salary_average_hourly"] = spdf4_clean["salary_average_hourly"].astype(float)
     spdf4_clean["salary_average_hourly"] = spdf4_clean["salary_average_hourly"].replace(0,np.nan)
 
+    # Create a calculation for annual salaries based on the hourly salary
+    # Formula: annual salary = hourly salary * work hours per week * weeks per year = hourly salary * 40 * 52
+    spdf4_clean["salary_average_annually"] = spdf4_clean["salary_average_hourly"] * 40 * 52
+
+    # Filter the data to the most recent complete years
+    spdf4_clean = spdf4_clean[spdf4_clean["quarter"].str[-4:].astype(int).between(2021, 2025)]
+
     spdf4_clean = spdf4_clean.dropna()
+
+    spdf4_clean = spdf4_clean.drop_duplicates()
 
     spdf4_clean = spdf4_clean.reset_index(drop=True)
     
@@ -295,5 +314,7 @@ def clean_support_df4(filepath):
 # spdf3_raw, spdf3_clean = clean_support_df3(SPDF3_FILEPATHCSV)
 # spdf4_raw, spdf4_clean = clean_support_df4(SPDF4_FILEPATHCSV)
 
-# print(spdf1_clean.head())
+# print(spdf1_clean.head(20))
+# print(spdf1_clean.columns)
 # print(spdf1_clean.isna().sum())
+# print(spdf1_clean.shape)
