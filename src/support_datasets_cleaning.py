@@ -296,25 +296,12 @@ def clean_support_df4(filepath):
 
 
 
+# spdf1_raw, spdf1_clean = clean_support_df1("data/support_dataset1_data_job_wages.csv")
+# spdf2_raw, spdf2_clean = clean_support_df2("data/support_dataset2_quaterly_asking_rent.csv")
+# spdf3_raw, spdf3_clean = clean_support_df3("data/support_dataset3_average_rents_by_population.csv")
+# spdf4_raw, spdf4_clean = clean_support_df4("data/support_dataset4_overall_job_vacancies.csv")
 
-
-
-
-
-
-
-
-
-
-
-
-# TESTING (To erase after the functions return the expected results)
-# spdf1_raw, spdf1_clean = clean_support_df1(SPDF1_FILEPATHCSV)
-# spdf2_raw, spdf2_clean = clean_support_df2(SPDF2_FILEPATHCSV)
-# spdf3_raw, spdf3_clean = clean_support_df3(SPDF3_FILEPATHCSV)
-# spdf4_raw, spdf4_clean = clean_support_df4(SPDF4_FILEPATHCSV)
-
-# print(spdf1_clean.head(20))
-# print(spdf1_clean.columns)
-# print(spdf1_clean.isna().sum())
-# print(spdf1_clean.shape)
+# spdf1_clean.to_csv("data/support_dataset1_clean.csv", index=False)
+# spdf2_clean.to_csv("data/support_dataset2_clean.csv", index=False)
+# spdf3_clean.to_csv("data/support_dataset3_clean.csv", index=False)
+# spdf4_clean.to_csv("data/support_dataset4_clean.csv", index=False)

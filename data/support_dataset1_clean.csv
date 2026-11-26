@@ -1,0 +1,10 @@
+title,city,salary_min_hourly,salary_mid_hourly,salary_max_hourly,job_prospects_rating,job_prospects_meaning,noc_id,province,salary_min_annual,salary_mid_annual,salary_max_annual
+Data Analyst,Vancouver,30.0,40.0,48.08,4,Good,21221,BC,62400,83200,100006
+Data Analyst,Toronto,33.33,45.13,62.5,2,Limited,21221,ON,69326,93870,130000
+Data Analyst,Montreal,31.83,47.0,66.26,2,Limited,21221,QC,66206,97760,137821
+Data Scientist,Vancouver,32.45,48.08,88.94,3,Moderate,21211,BC,67496,100006,184995
+Data Scientist,Toronto,32.0,46.33,71.79,1,Very limited,21211,ON,66560,96366,149323
+Data Scientist,Montreal,31.73,45.64,96.0,2,Limited,21211,QC,65998,94931,199680
+Data Engineer,Vancouver,32.45,48.08,88.94,3,Moderate,21211,BC,67496,100006,184995
+Data Engineer,Toronto,32.0,46.33,71.79,1,Very limited,21211,ON,66560,96366,149323
+Data Engineer,Montreal,31.73,45.64,96.0,2,Limited,21211,QC,65998,94931,199680
