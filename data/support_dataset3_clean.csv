@@ -1,0 +1,130 @@
+building_type,bedrooms,building_structure,year,monthly_rent_cad,city,province,annual_rent_cad
+Row / Townhouse,1,Three units and over,2021,780,Montreal,QC,9360
+Row / Townhouse,1,Three units and over,2022,779,Montreal,QC,9348
+Row / Townhouse,1,Three units and over,2023,1058,Montreal,QC,12696
+Row / Townhouse,2,Three units and over,2021,1027,Montreal,QC,12324
+Row / Townhouse,2,Three units and over,2022,1000,Montreal,QC,12000
+Row / Townhouse,2,Three units and over,2023,1178,Montreal,QC,14136
+Row / Townhouse,2,Three units and over,2024,1375,Montreal,QC,16500
+Row / Townhouse,2,Three units and over,2025,1383,Montreal,QC,16596
+Row / Townhouse,3,Three units and over,2021,1356,Montreal,QC,16272
+Row / Townhouse,3,Three units and over,2022,1381,Montreal,QC,16572
+Row / Townhouse,3,Three units and over,2023,1482,Montreal,QC,17784
+Row / Townhouse,3,Three units and over,2024,1617,Montreal,QC,19404
+Row / Townhouse,3,Three units and over,2025,1613,Montreal,QC,19356
+Apartment,1,Three units and over,2021,821,Montreal,QC,9852
+Apartment,1,Three units and over,2022,912,Montreal,QC,10944
+Apartment,1,Three units and over,2023,960,Montreal,QC,11520
+Apartment,1,Three units and over,2024,1051,Montreal,QC,12612
+Apartment,1,Three units and over,2025,1131,Montreal,QC,13572
+Apartment,2,Three units and over,2021,932,Montreal,QC,11184
+Apartment,2,Three units and over,2022,1022,Montreal,QC,12264
+Apartment,2,Three units and over,2023,1096,Montreal,QC,13152
+Apartment,2,Three units and over,2024,1176,Montreal,QC,14112
+Apartment,2,Three units and over,2025,1346,Montreal,QC,16152
+Apartment,3,Three units and over,2021,1144,Montreal,QC,13728
+Apartment,3,Three units and over,2022,1230,Montreal,QC,14760
+Apartment,3,Three units and over,2023,1323,Montreal,QC,15876
+Apartment,3,Three units and over,2024,1488,Montreal,QC,17856
+Apartment,3,Three units and over,2025,1626,Montreal,QC,19512
+Apartment,1,Six units and over,2021,880,Montreal,QC,10560
+Apartment,1,Six units and over,2022,964,Montreal,QC,11568
+Apartment,1,Six units and over,2023,1011,Montreal,QC,12132
+Apartment,1,Six units and over,2024,1108,Montreal,QC,13296
+Apartment,1,Six units and over,2025,1200,Montreal,QC,14400
+Apartment,2,Six units and over,2021,967,Montreal,QC,11604
+Apartment,2,Six units and over,2022,1054,Montreal,QC,12648
+Apartment,2,Six units and over,2023,1131,Montreal,QC,13572
+Apartment,2,Six units and over,2024,1238,Montreal,QC,14856
+Apartment,2,Six units and over,2025,1364,Montreal,QC,16368
+Apartment,3,Six units and over,2021,1167,Montreal,QC,14004
+Apartment,3,Six units and over,2022,1238,Montreal,QC,14856
+Apartment,3,Six units and over,2023,1316,Montreal,QC,15792
+Apartment,3,Six units and over,2024,1474,Montreal,QC,17688
+Apartment,3,Six units and over,2025,1652,Montreal,QC,19824
+Row / Townhouse,1,Three units and over,2021,1806,Toronto,ON,21672
+Row / Townhouse,1,Three units and over,2022,1495,Toronto,ON,17940
+Row / Townhouse,1,Three units and over,2023,1885,Toronto,ON,22620
+Row / Townhouse,2,Three units and over,2021,1835,Toronto,ON,22020
+Row / Townhouse,2,Three units and over,2022,1748,Toronto,ON,20976
+Row / Townhouse,2,Three units and over,2023,1722,Toronto,ON,20664
+Row / Townhouse,2,Three units and over,2024,1755,Toronto,ON,21060
+Row / Townhouse,2,Three units and over,2025,1954,Toronto,ON,23448
+Row / Townhouse,3,Three units and over,2021,1966,Toronto,ON,23592
+Row / Townhouse,3,Three units and over,2022,1908,Toronto,ON,22896
+Row / Townhouse,3,Three units and over,2023,2061,Toronto,ON,24732
+Row / Townhouse,3,Three units and over,2024,1990,Toronto,ON,23880
+Row / Townhouse,3,Three units and over,2025,2162,Toronto,ON,25944
+Apartment,1,Three units and over,2021,1439,Toronto,ON,17268
+Apartment,1,Three units and over,2022,1526,Toronto,ON,18312
+Apartment,1,Three units and over,2023,1691,Toronto,ON,20292
+Apartment,1,Three units and over,2024,1715,Toronto,ON,20580
+Apartment,1,Three units and over,2025,1761,Toronto,ON,21132
+Apartment,2,Three units and over,2021,1679,Toronto,ON,20148
+Apartment,2,Three units and over,2022,1779,Toronto,ON,21348
+Apartment,2,Three units and over,2023,1961,Toronto,ON,23532
+Apartment,2,Three units and over,2024,1974,Toronto,ON,23688
+Apartment,2,Three units and over,2025,2046,Toronto,ON,24552
+Apartment,3,Three units and over,2021,1907,Toronto,ON,22884
+Apartment,3,Three units and over,2022,2038,Toronto,ON,24456
+Apartment,3,Three units and over,2023,2191,Toronto,ON,26292
+Apartment,3,Three units and over,2024,2225,Toronto,ON,26700
+Apartment,3,Three units and over,2025,2317,Toronto,ON,27804
+Apartment,1,Six units and over,2021,1441,Toronto,ON,17292
+Apartment,1,Six units and over,2022,1529,Toronto,ON,18348
+Apartment,1,Six units and over,2023,1691,Toronto,ON,20292
+Apartment,1,Six units and over,2024,1714,Toronto,ON,20568
+Apartment,1,Six units and over,2025,1761,Toronto,ON,21132
+Apartment,2,Six units and over,2021,1681,Toronto,ON,20172
+Apartment,2,Six units and over,2022,1780,Toronto,ON,21360
+Apartment,2,Six units and over,2023,1971,Toronto,ON,23652
+Apartment,2,Six units and over,2024,1979,Toronto,ON,23748
+Apartment,2,Six units and over,2025,2056,Toronto,ON,24672
+Apartment,3,Six units and over,2021,1891,Toronto,ON,22692
+Apartment,3,Six units and over,2022,2034,Toronto,ON,24408
+Apartment,3,Six units and over,2023,2203,Toronto,ON,26436
+Apartment,3,Six units and over,2024,2221,Toronto,ON,26652
+Apartment,3,Six units and over,2025,2319,Toronto,ON,27828
+Row / Townhouse,1,Three units and over,2021,1376,Vancouver,BC,16512
+Row / Townhouse,1,Three units and over,2022,1658,Vancouver,BC,19896
+Row / Townhouse,1,Three units and over,2023,2102,Vancouver,BC,25224
+Row / Townhouse,2,Three units and over,2021,2048,Vancouver,BC,24576
+Row / Townhouse,2,Three units and over,2022,2392,Vancouver,BC,28704
+Row / Townhouse,2,Three units and over,2023,2478,Vancouver,BC,29736
+Row / Townhouse,2,Three units and over,2024,2269,Vancouver,BC,27228
+Row / Townhouse,2,Three units and over,2025,2409,Vancouver,BC,28908
+Row / Townhouse,3,Three units and over,2021,2020,Vancouver,BC,24240
+Row / Townhouse,3,Three units and over,2022,2284,Vancouver,BC,27408
+Row / Townhouse,3,Three units and over,2023,2306,Vancouver,BC,27672
+Row / Townhouse,3,Three units and over,2024,2174,Vancouver,BC,26088
+Row / Townhouse,3,Three units and over,2025,2348,Vancouver,BC,28176
+Apartment,1,Three units and over,2021,1434,Vancouver,BC,17208
+Apartment,1,Three units and over,2022,1543,Vancouver,BC,18516
+Apartment,1,Three units and over,2023,1696,Vancouver,BC,20352
+Apartment,1,Three units and over,2024,1769,Vancouver,BC,21228
+Apartment,1,Three units and over,2025,1806,Vancouver,BC,21672
+Apartment,2,Three units and over,2021,1824,Vancouver,BC,21888
+Apartment,2,Three units and over,2022,2002,Vancouver,BC,24024
+Apartment,2,Three units and over,2023,2181,Vancouver,BC,26172
+Apartment,2,Three units and over,2024,2314,Vancouver,BC,27768
+Apartment,2,Three units and over,2025,2363,Vancouver,BC,28356
+Apartment,3,Three units and over,2021,2326,Vancouver,BC,27912
+Apartment,3,Three units and over,2022,2511,Vancouver,BC,30132
+Apartment,3,Three units and over,2023,2547,Vancouver,BC,30564
+Apartment,3,Three units and over,2024,2942,Vancouver,BC,35304
+Apartment,3,Three units and over,2025,3009,Vancouver,BC,36108
+Apartment,1,Six units and over,2021,1437,Vancouver,BC,17244
+Apartment,1,Six units and over,2022,1546,Vancouver,BC,18552
+Apartment,1,Six units and over,2023,1700,Vancouver,BC,20400
+Apartment,1,Six units and over,2024,1771,Vancouver,BC,21252
+Apartment,1,Six units and over,2025,1809,Vancouver,BC,21708
+Apartment,2,Six units and over,2021,1828,Vancouver,BC,21936
+Apartment,2,Six units and over,2022,2005,Vancouver,BC,24060
+Apartment,2,Six units and over,2023,2186,Vancouver,BC,26232
+Apartment,2,Six units and over,2024,2315,Vancouver,BC,27780
+Apartment,2,Six units and over,2025,2367,Vancouver,BC,28404
+Apartment,3,Six units and over,2021,2323,Vancouver,BC,27876
+Apartment,3,Six units and over,2022,2516,Vancouver,BC,30192
+Apartment,3,Six units and over,2023,2545,Vancouver,BC,30540
+Apartment,3,Six units and over,2024,2961,Vancouver,BC,35532
+Apartment,3,Six units and over,2025,3026,Vancouver,BC,36312
