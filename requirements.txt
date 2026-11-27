@@ -15,3 +15,6 @@ scipy
 jupyter
 openpyxl
 ipython
+scikit-posthocs 
+statsmodels
+kaleido
