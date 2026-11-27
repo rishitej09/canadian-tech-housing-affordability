@@ -1,0 +1,37 @@
+comparison_type,job_role,city,baseline_group,comparison_group,affordability_indicator,comparison_minus_baseline_pp,difference_95_ci_lower_pp,difference_95_ci_upper_pp
+cities_within_role,Data Analyst,,Montreal,Toronto,rent_burden_pct,6.709359605911331,2.197520675113055,10.533157894736846
+cities_within_role,Data Analyst,,Montreal,Toronto,affordable_listings_pct,-23.77069133398247,-37.391674780915295,-7.521908471275559
+cities_within_role,Data Analyst,,Montreal,Vancouver,rent_burden_pct,10.285714285714285,6.708332259296868,13.847619047619045
+cities_within_role,Data Analyst,,Montreal,Vancouver,affordable_listings_pct,-36.95750452079565,-52.44122965641954,-22.739602169981914
+cities_within_role,Data Analyst,,Toronto,Vancouver,rent_burden_pct,3.5763546798029537,-0.5449786942127783,8.35734118092862
+cities_within_role,Data Analyst,,Toronto,Vancouver,affordable_listings_pct,-13.186813186813183,-30.425824175824175,-0.2747252747252773
+cities_within_role,Data Engineer,,Montreal,Toronto,rent_burden_pct,5.732351256886712,2.596105312607233,8.941702484774456
+cities_within_role,Data Engineer,,Montreal,Toronto,affordable_listings_pct,-7.436708860759495,-25.10376095423564,1.4739532619279185
+cities_within_role,Data Engineer,,Montreal,Vancouver,rent_burden_pct,10.002042900919303,7.135914317567392,12.977414647081476
+cities_within_role,Data Engineer,,Montreal,Vancouver,affordable_listings_pct,-32.436708860759495,-43.75,-19.710669077757686
+cities_within_role,Data Engineer,,Toronto,Vancouver,rent_burden_pct,4.269691644032591,0.9951086882740765,7.521758698045131
+cities_within_role,Data Engineer,,Toronto,Vancouver,affordable_listings_pct,-25.0,-36.126373626373635,-5.698832417582437
+cities_within_role,Data Scientist,,Montreal,Toronto,rent_burden_pct,2.517460317460319,-0.8670366584690312,5.762824273697603
+cities_within_role,Data Scientist,,Montreal,Toronto,affordable_listings_pct,-10.418695228821804,-21.555501460564756,3.6027263875365065
+cities_within_role,Data Scientist,,Montreal,Vancouver,rent_burden_pct,5.705943691345155,2.400835714285713,9.650683222384043
+cities_within_role,Data Scientist,,Montreal,Vancouver,affordable_listings_pct,-24.841772151898738,-38.155797920434004,-8.691229656419537
+cities_within_role,Data Scientist,,Toronto,Vancouver,rent_burden_pct,3.1884833738848357,-0.3359957039829261,7.397385464620808
+cities_within_role,Data Scientist,,Toronto,Vancouver,affordable_listings_pct,-14.423076923076934,-29.807692307692307,0.20776098901096407
+roles_within_city,,Montreal,Data Analyst,Data Engineer,rent_burden_pct,-7.820224719101123,-10.103553172940472,-6.104453441295544
+roles_within_city,,Montreal,Data Analyst,Data Engineer,affordable_listings_pct,24.050632911392412,13.924050632911388,36.708860759493675
+roles_within_city,,Montreal,Data Analyst,Data Scientist,rent_burden_pct,-3.4285714285714306,-5.3655923530554945,-2.012191547540385
+roles_within_city,,Montreal,Data Analyst,Data Scientist,affordable_listings_pct,16.455696202531655,6.329113924050631,25.31645569620254
+roles_within_city,,Montreal,Data Engineer,Data Scientist,rent_burden_pct,4.3916532905296926,2.42949528224228,6.452592434315566
+roles_within_city,,Montreal,Data Engineer,Data Scientist,affordable_listings_pct,-7.594936708860757,-20.25316455696202,-1.2658227848101262
+roles_within_city,,Toronto,Data Analyst,Data Engineer,rent_burden_pct,-8.797233068125742,-10.535841912258018,-6.580119898571078
+roles_within_city,,Toronto,Data Analyst,Data Engineer,affordable_listings_pct,40.38461538461539,23.076923076923066,50.0
+roles_within_city,,Toronto,Data Analyst,Data Scientist,rent_burden_pct,-7.620470717022442,-9.292232648864815,-5.66372596059307
+roles_within_city,,Toronto,Data Analyst,Data Scientist,affordable_listings_pct,29.80769230769232,19.230769230769226,39.423076923076934
+roles_within_city,,Toronto,Data Engineer,Data Scientist,rent_burden_pct,1.1767623511032994,-0.16961192810457373,2.2532388743199334
+roles_within_city,,Toronto,Data Engineer,Data Scientist,affordable_listings_pct,-10.576923076923066,-18.269230769230774,0.0
+roles_within_city,,Vancouver,Data Analyst,Data Engineer,rent_burden_pct,-8.103896103896105,-10.51164088679571,-6.1524025536819815
+roles_within_city,,Vancouver,Data Analyst,Data Engineer,affordable_listings_pct,28.57142857142857,19.64285714285714,41.964285714285715
+roles_within_city,,Vancouver,Data Analyst,Data Scientist,rent_burden_pct,-8.00834202294056,-10.715215346455945,-4.829822649484636
+roles_within_city,,Vancouver,Data Analyst,Data Scientist,affordable_listings_pct,28.57142857142857,16.964285714285708,42.85714285714286
+roles_within_city,,Vancouver,Data Engineer,Data Scientist,rent_burden_pct,0.09555408095554441,-2.0696321939906315,3.251233862158347
+roles_within_city,,Vancouver,Data Engineer,Data Scientist,affordable_listings_pct,0.0,-10.714285714285722,8.92857142857143
